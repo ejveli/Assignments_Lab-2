@@ -1,8 +1,9 @@
 package Lab_2;
 
+import java.awt.Label;
 import java.util.Scanner;
 
-public class Question_1 {
+public class Question_1copy {
 
 	/*
 	 * Write a program with a loop that lets the user enter a series of integer
@@ -10,16 +11,16 @@ public class Question_1 {
 	 * the largest and smallest numbers entered.
 	 */
 
-	static int smallestNumber;
-	static int largestNumber;
-	static int check;
-	static Scanner scan;
-
-
 	public static void main(String[] args) {
-		scan = new Scanner(System.in);
+		Scanner scan = new Scanner(System.in);
+		int smallestNumber;
+		int largestNumber;
+		int check;
+		int number3;
+
 		System.out.println("Enter your first number: ");
 		int number1 = scan.nextInt();
+
 		System.out.println("Enter your next number: ");
 		int number2 = scan.nextInt();
 
@@ -32,42 +33,36 @@ public class Question_1 {
 			largestNumber = number2;
 		}
 
-		check();
-
-		while (check == 1) {
-			System.out.println("Enter your next number: ");
-			int number3 = scan.nextInt();
-			if (number3 > largestNumber)
-				largestNumber = number3;
-			else if (number3 < smallestNumber)
-				number3 = smallestNumber;
-
-			check();
-
-		}
-	}
-
-	public static int check() {
-
 		System.out.println("Do you want to enter another number: 0-No, 1-Yes");
 		check = scan.nextInt();
 
-		if (check == 0 || check == 1) {
+		while (check == 1 || check == 0) {
 
 			if (check == 0) {
 
 				System.out.println("Smallest number is: " + smallestNumber);
 				System.out.println("Largest number is: " + largestNumber);
+				break;
 
 			}
-		} else {
 
-			System.out.println("You must enter 0 or 1");
-			check();
+			if (check == 1) {
+
+				System.out.println("Enter your next number: ");
+				number3 = scan.nextInt();
+
+				if (number3 > largestNumber) {
+					largestNumber = number3;
+
+				} else if (number3 < smallestNumber) {
+					number3 = smallestNumber;
+				}
+				System.out.println("Do you want to enter another number: 0-No, 1-Yes");
+				check = scan.nextInt();
+
+			}
 
 		}
 
-		return check;
 	}
-
 }
