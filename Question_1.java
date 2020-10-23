@@ -1,22 +1,9 @@
-package Lab_2;
-
-import java.awt.Label;
-import java.util.Scanner;
-
-public class Question_1copy {
-
-	/*
-	 * Write a program with a loop that lets the user enter a series of integer
-	 * numbers. After all the numbers have been entered, the program should display
-	 * the largest and smallest numbers entered.
-	 */
-
-	public static void main(String[] args) {
+public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		int smallestNumber;
 		int largestNumber;
-		int check;
-		int number3;
+		int enteredNumber;
+		int check = 1; // I assume check=1 in order to enter while loop
 
 		System.out.println("Enter your first number: ");
 		int number1 = scan.nextInt();
@@ -33,15 +20,13 @@ public class Question_1copy {
 			largestNumber = number2;
 		}
 
-		System.out.println("Do you want to enter another number: 0-No, 1-Yes");
-		check = scan.nextInt();
+		while (check == 1) {
 
-		while (check == 1 || check == 0) {
+			System.out.println("Do you want to enter another number: 0-No, 1-Yes");
+			check = scan.nextInt();
 
 			if (check == 0) {
 
-				System.out.println("Smallest number is: " + smallestNumber);
-				System.out.println("Largest number is: " + largestNumber);
 				break;
 
 			}
@@ -49,20 +34,21 @@ public class Question_1copy {
 			if (check == 1) {
 
 				System.out.println("Enter your next number: ");
-				number3 = scan.nextInt();
+				enteredNumber = scan.nextInt();
 
-				if (number3 > largestNumber) {
-					largestNumber = number3;
+				if (enteredNumber > largestNumber) {
 
-				} else if (number3 < smallestNumber) {
-					number3 = smallestNumber;
+					largestNumber = enteredNumber;
+
+				} else if (enteredNumber < smallestNumber) {
+
+					smallestNumber = enteredNumber;
 				}
-				System.out.println("Do you want to enter another number: 0-No, 1-Yes");
-				check = scan.nextInt();
 
 			}
-
+			check = 1; // to return beginning of while loop if another number entered instead of 1 or 0
 		}
+		System.out.println("Smallest number is: " + smallestNumber);
+		System.out.println("Largest number is: " + largestNumber);
 
 	}
-}
